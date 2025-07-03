@@ -19,8 +19,13 @@ spring:
           uri: lb://cart-service
           predicates:
             - Path=/api/cart/**
+  main:
+    web-application-type: reactive
 
 eureka:
   client:
     service-url:
       defaultZone: http://localhost:8761/eureka/
+  instance:
+    prefer-ip-address: true
+    instance-id: ${spring.application.name}:${server.port}
